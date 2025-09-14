@@ -123,24 +123,10 @@ if uploaded_file is not None:
         st.title('Most common words')
         st.pyplot(fig)
 
-        # emoji analysis
-        
+    # emoji analysis
+
+
         st.title('Emoji Analysis')
-        emoji_df=helper.emoji_helper(selected_user,df)
-        col1,col2=st.columns(2)
-
-        with col1:
-            st.dataframe(emoji_df)
-        with col2:
-            try:
-                # Font for emoji support
-                font_path = 'fonts/NotoColorEmoji-Regular.ttf'
-                emoji_font = fm.FontProperties(fname=font_path)
-
-                fig, ax = plt.subplots()
-                ax.pie(emoji_df[1].head(10), labels=emoji_df[0].head(10), autopct='%0.2f', textprops={'fontproperties': emoji_font})
-                st.pyplot(fig)
-            except Exception as e:
-                st.error("Could not display emoji pie chart. Font file may be missing.")
-                st.error(e)
+        emoji_df = helper.emoji_helper(selected_user, df)
+        st.dataframe(emoji_df)
         
